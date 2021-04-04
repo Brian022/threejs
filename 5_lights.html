@@ -110,7 +110,15 @@
         plane.rotation.x = Math.PI * -.5;
         scene.add( plane );
 
-       
+        var geometry_cuadro = new THREE.BoxGeometry(cubeSize,cubeSize,1);
+        var material = new THREE.MeshBasicMaterial( );
+        const loader = new THREE.TextureLoader()
+        loader.load('textures/firme.png', (texture)=>{material.map = texture})
+        
+        var cuadro = new THREE.Mesh(geometry_cuadro, material);
+        cuadro.position.set(10, 3, 0);
+        scene.add(cuadro);
+
 
        
         ////////////////////////////////////////////////////////////
