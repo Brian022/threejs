@@ -13,8 +13,15 @@
     <script>
         // mesh ////////////////////////////////////////////////////        
         var geometry = new THREE.BoxGeometry();
+        var cubeMaterials=[
+
+            new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('./textures/water.jpg'), side:THREE.DoubleSide});
+
+
+        ];
         //var material = new THREE.MeshBasicMaterial( {color:0x780000} );
-        var material = new THREE.MeshBasicMaterial( {color:0x780000, wireframe: true} );
+        //var material = new THREE.MeshBasicMaterial( {color:0x780000, wireframe: true} );
+        var material= new THREE.MeshFaceMaterial(cubeMaterials);
         var cube = new THREE.Mesh( geometry, material );
         
         
