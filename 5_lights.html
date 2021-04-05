@@ -63,17 +63,29 @@
         var geometry_cube = new THREE.BoxGeometry(cubeSize,cubeSize,cubeSize);
         var geometry_cube1 = new THREE.BoxGeometry(2,4,1);
         var geometry_cube2 = new THREE.BoxGeometry(1,3,4);
-        var rojo = new THREE.MeshPhongMaterial( {color:0xff0000} );
+        var rojo = new THREE.MeshPhongMaterial( {color:0xE2BCEF} );
         var blanco = new THREE.MeshPhongMaterial( {color:0xf0f0f0} );
         var cube = new THREE.Mesh( geometry_cube, rojo );
-        var rectangle = new THREE.Mesh( geometry_cube1, rojo );
+        var rectangle = new THREE.Mesh( geometry_cube1, new THREE.MeshPhongMaterial( {color:0xBEB50F} ) );
         var ventana = new THREE.Mesh( geometry_cube2, blanco );
+        var ventana2 = new THREE.Mesh( geometry_cube2, blanco );
+
+        var geometry_cone= new THREE.ConeGeometry( 5, 5, 10000);
+        var cone= new THREE.Mesh( geometry_cone, new THREE.MeshPhongMaterial( {color:0x90BB34} ) );
+
+
+
         cube.position.set(0, 3, 0);
         rectangle.position.set(0, 2, 3)
-        ventana.position.set(3,3,0);
+        ventana.position.set(2.8,3,0);
+        ventana2.position.set(-2.8,3,0);
+
+        cone.position.set(0,8.5,0);
         scene.add(cube); 
         scene.add(rectangle);
         scene.add(ventana);
+        scene.add(ventana2);
+        scene.add(cone);
 
         const sphereRadius = 3;
         var geometry_sphere = new THREE.SphereGeometry(0.2, 32, 32);
@@ -88,15 +100,66 @@
         hojas.position.set(-11, 9, 0);
         hojas1.position.set(-9, 9, 0);
         hojas2.position.set(-10, 9, 1);
-        hojas3.position.set(-10, 9, -1);
-        hojas3.position.set(-10, 10, 0);
+        hojas3.position.set(-10, 10, 0); 
         perilla.position.set(-0.8, 2, 3.5);
         scene.add(perilla);
         scene.add(hojas);
         scene.add(hojas1);
         scene.add(hojas2);
         scene.add(hojas3);
-        scene.add(hojas4);
+
+
+        var hojas_1 = new THREE.Mesh( geometry_sphere1, verde );
+        var hojas11 = new THREE.Mesh( geometry_sphere1, verde );
+        var hojas22 = new THREE.Mesh( geometry_sphere1, verde );
+        var hojas33 = new THREE.Mesh( geometry_sphere1, verde );
+        hojas_1.position.set(11, 9, 0);
+        hojas11.position.set(9, 9, 0);
+        hojas22.position.set(10, 9, 1);
+        hojas33.position.set(10, 10, 0); 
+    
+        scene.add(hojas_1);
+        scene.add(hojas11);
+        scene.add(hojas22);
+        scene.add(hojas33);
+
+
+        
+        var hojas_11 = new THREE.Mesh( geometry_sphere1, verde );
+        var hojas111 = new THREE.Mesh( geometry_sphere1, verde );
+        var hojas222 = new THREE.Mesh( geometry_sphere1, verde );
+        var hojas333 = new THREE.Mesh( geometry_sphere1, verde );
+        hojas_11.position.set(11, 9, 15);
+        hojas111.position.set(9, 9, 15);
+        hojas222.position.set(10, 9, 16);
+        hojas333.position.set(10, 10, 15); 
+    
+        scene.add(hojas_11);
+        scene.add(hojas111);
+        scene.add(hojas222);
+        scene.add(hojas333);
+
+
+        var hojas_111 = new THREE.Mesh( geometry_sphere1, verde );
+        var hojas1111 = new THREE.Mesh( geometry_sphere1, verde );
+        var hojas2222 = new THREE.Mesh( geometry_sphere1, verde );
+        var hojas3333 = new THREE.Mesh( geometry_sphere1, verde );
+        hojas_111.position.set(-11, 9, 15);
+        hojas1111.position.set(-9, 9, 15);
+        hojas2222.position.set(-10, 9, 16);
+        hojas3333.position.set(-10, 10, 15); 
+    
+        scene.add(hojas_111);
+        scene.add(hojas1111);
+        scene.add(hojas2222);
+        scene.add(hojas3333);
+
+
+
+
+
+
+    
 
         var geometry = new THREE.CylinderGeometry( 1, 2, 9, 32 );
         var material = new THREE.MeshBasicMaterial( {color: 0x804000} );
@@ -104,20 +167,33 @@
         tronco.position.set(-10, 4.5, 0);
         scene.add(tronco);
 
-        const geometry_plane = new THREE.PlaneGeometry( 50, 50, 32 );
+
+        var geometry_cylinder = new THREE.CylinderGeometry( 1, 2, 9, 32 );
+        var material = new THREE.MeshBasicMaterial( {color: 0x804000} );
+        var tronco2 = new THREE.Mesh( geometry_cylinder, material );
+        tronco2.position.set(10, 4.5, 0);
+        scene.add(tronco2);
+
+        var geometry_cylinder2 = new THREE.CylinderGeometry( 1, 2, 9, 32 );
+        var material = new THREE.MeshBasicMaterial( {color: 0x804000} );
+        var tronco3 = new THREE.Mesh( geometry_cylinder2, material );
+        tronco3.position.set(10, 4.5, 15);
+        scene.add(tronco3);
+
+        var geometry_cylinder3 = new THREE.CylinderGeometry( 1, 2, 9, 32 );
+        var material = new THREE.MeshBasicMaterial( {color: 0x804000} );
+        var tronco4 = new THREE.Mesh( geometry_cylinder3, material );
+        tronco4.position.set(-10, 4.5, 15);
+        scene.add(tronco4);
+
+        const geometry_plane = new THREE.PlaneGeometry( 40, 38, 32 );
         const verde2 = new THREE.MeshPhongMaterial( {color: 0x56E50F} );
         const plane = new THREE.Mesh( geometry_plane, verde2 );
         plane.rotation.x = Math.PI * -.5;
         scene.add( plane );
 
-        var geometry_cuadro = new THREE.BoxGeometry(cubeSize,cubeSize,1);
-        var material = new THREE.MeshBasicMaterial( );
-        const loader = new THREE.TextureLoader()
-        loader.load('textures/firme.png', (texture)=>{material.map = texture})
         
-        var cuadro = new THREE.Mesh(geometry_cuadro, material);
-        cuadro.position.set(10, 3, 0);
-        scene.add(cuadro);
+       
 
 
        
@@ -208,9 +284,21 @@
         // spotLight  ///////////////////////////////////////
         const spotLight = new THREE.SpotLight( 0xffffff );
         spotLight.position.set( 20, 20, 30 );        
-        spotLight.target.position.set(10, 0, 0); 
+        spotLight.target.position.set(5, 0, 0); 
         scene.add( spotLight );
         scene.add(spotLight.target);
+
+
+        ////////////////////////////////////////////////////
+        //FUENTE TRASERA DE LUZ
+        ////////////////////////////////////////////////////
+        const spotLight2 = new THREE.SpotLight( 0xffffff );
+        spotLight2.position.set( -20, 20, -30 );        
+        spotLight2.target.position.set(-5, 0, 0); 
+        scene.add( spotLight2 );
+        scene.add(spotLight2.target);
+
+
         const helper = new THREE.DirectionalLightHelper(spotLight);
         scene.add(helper);
 
