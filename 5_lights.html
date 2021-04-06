@@ -371,14 +371,15 @@
             //piscina.rotation.x += 0.01;
             //piscina.rotation.y += 0.01;
             piscina.rotation.z += 0.01;
-        
-            if(nube.position.x != -0.010000000000083624)
-            {
-                nube.position.x +=velocidad;
-                console.log(nube.position.x);
+            nube.position.x +=velocidad;
+            console.log(nube.position.x);
+            if (nube.position.x==10.009999999999748){
+                
+               velocidad*=-1;
             }
-            else{
-                nube.position.x -=velocidad;
+
+            if(nube.position.x==-6){
+                velocidad*=-1;
             }
                 
             
