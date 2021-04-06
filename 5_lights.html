@@ -97,16 +97,19 @@
         var hojas2 = new THREE.Mesh( geometry_sphere1, verde );
         var hojas3 = new THREE.Mesh( geometry_sphere1, verde );
         var hojas4 = new THREE.Mesh( geometry_sphere1, verde );
+        var nube = new THREE.Mesh( geometry_sphere1, verde );
         hojas.position.set(-11, 9, 0);
         hojas1.position.set(-9, 9, 0);
         hojas2.position.set(-10, 9, 1);
         hojas3.position.set(-10, 10, 0); 
         perilla.position.set(-0.8, 2, 3.5);
+        nube.position.set(-6, 15, -7);
         scene.add(perilla);
         scene.add(hojas);
         scene.add(hojas1);
         scene.add(hojas2);
         scene.add(hojas3);
+        scene.add(nube);
 
 
         var hojas_1 = new THREE.Mesh( geometry_sphere1, verde );
@@ -216,6 +219,9 @@
         piscina.position.set(5, 0.2, 10)
         piscina.rotation.x = Math.PI / 2;
         scene.add(piscina);
+        
+
+    
 
         
 
@@ -358,12 +364,26 @@
         scene.add( axesHelper );
                 
         // animation //////////////////////////////////////////////////
+        var velocidad = 0.01;
         var animate = function(){
             requestAnimationFrame(animate);
             renderer.render( scene, camera );
             //piscina.rotation.x += 0.01;
             //piscina.rotation.y += 0.01;
             piscina.rotation.z += 0.01;
+        
+            if(nube.position.x != -0.010000000000083624)
+            {
+                nube.position.x +=velocidad;
+                console.log(nube.position.x);
+            }
+            else{
+                nube.position.x -=velocidad;
+            }
+                
+            
+            
+            
         }
         animate();
         
