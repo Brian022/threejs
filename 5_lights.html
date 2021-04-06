@@ -162,26 +162,26 @@
     
 
         var geometry = new THREE.CylinderGeometry( 1, 2, 9, 32 );
-        var material = new THREE.MeshBasicMaterial( {color: 0x804000} );
+        var material = new THREE.MeshPhongMaterial( {color: 0x804000} );
         var tronco = new THREE.Mesh( geometry, material );
         tronco.position.set(-10, 4.5, 0);
         scene.add(tronco);
 
 
         var geometry_cylinder = new THREE.CylinderGeometry( 1, 2, 9, 32 );
-        var material = new THREE.MeshBasicMaterial( {color: 0x804000} );
+        var material = new THREE.MeshPhongMaterial( {color: 0x804000} );
         var tronco2 = new THREE.Mesh( geometry_cylinder, material );
         tronco2.position.set(10, 4.5, 0);
         scene.add(tronco2);
 
         var geometry_cylinder2 = new THREE.CylinderGeometry( 1, 2, 9, 32 );
-        var material = new THREE.MeshBasicMaterial( {color: 0x804000} );
+        var material = new THREE.MeshPhongMaterial( {color: 0x804000} );
         var tronco3 = new THREE.Mesh( geometry_cylinder2, material );
         tronco3.position.set(10, 4.5, 15);
         scene.add(tronco3);
 
         var geometry_cylinder3 = new THREE.CylinderGeometry( 1, 2, 9, 32 );
-        var material = new THREE.MeshBasicMaterial( {color: 0x804000} );
+        var material = new THREE.MeshPhongMaterial( {color: 0x804000} );
         var tronco4 = new THREE.Mesh( geometry_cylinder3, material );
         tronco4.position.set(-10, 4.5, 15);
         scene.add(tronco4);
@@ -193,7 +193,35 @@
         scene.add( plane );
 
         
-       
+        var textureLoader = new THREE.TextureLoader();
+        const loader = new THREE.CubeTextureLoader();
+        loader.setPath( 'textures/' );
+        const textureCube = loader.load( [
+            'firme.jpg',
+            'firme.jpg',
+            'firme.jpg',
+            'firme.jpg',
+            'firme.jpg',
+            'firme.jpg'
+        ] );
+
+        const materialfirme = new THREE.MeshBasicMaterial( {envMap: textureCube } );
+        var firmesaso =new THREE.Mesh(geometry_cube, materialfirme);
+        firmesaso.position.set(0,3,10);
+        scene.add(firmesaso);
+
+        var agua = textureLoader.load("/textures/water.jpg");
+        let circleGeom = new THREE.CircleGeometry(6, 4,);
+        let circle = new THREE.MeshBasicMaterial({
+            map: agua,
+            side: THREE.DoubleSide
+        });
+        let piscina = new THREE.Mesh(circleGeom, circle);
+        piscina.position.set(0, 0.2, 10)
+        piscina.rotation.x = Math.PI / 2;
+        scene.add(piscina);
+
+        
 
 
        
@@ -337,8 +365,12 @@
         var animate = function(){
             requestAnimationFrame(animate);
             renderer.render( scene, camera );
+            //piscina.rotation.x += 0.01;
+            //piscina.rotation.y += 0.01;
+            piscina.rotation.z += 0.01;
         }
         animate();
+        
 
         // redimensioar  /////////////////////////////////////////////
         window.addEventListener('resize', redimensionar);
