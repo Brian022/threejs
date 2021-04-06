@@ -96,8 +96,8 @@
         var hojas4 = new THREE.Mesh( geometry_sphere1, verde );
         
         var textureLoadernube = new THREE.TextureLoader();
-        var nube = textureLoadernube.load("/textures/nubes.jpg");
-        let nubemat = new THREE.MeshPhongMaterial({
+        var nube = textureLoadernube.load("/textures/nube3.jpg");
+        let nubemat = new THREE.MeshBasicMaterial({
             map: nube,
             side: THREE.DoubleSide
         });
@@ -210,9 +210,18 @@
         tronco4.position.set(-10, 4.5, 15);
         scene.add(tronco4);
 
+
+        const texturacesped = new THREE.TextureLoader();
+        const cesped= texturacesped.load("./textures/cesped.jpg");
         const geometry_plane = new THREE.PlaneGeometry( 40, 38, 32 );
-        const verde2 = new THREE.MeshPhongMaterial( {color: 0x56E50F} );
-        const plane = new THREE.Mesh( geometry_plane, verde2 );
+        let planemat = new THREE.MeshBasicMaterial( 
+            {
+                map:cesped,
+                side:THREE.DoubleSide  
+            }
+         );
+
+        const plane= new THREE.Mesh(geometry_plane, planemat);    
         plane.rotation.x = Math.PI * -.5;
         scene.add( plane );
 
