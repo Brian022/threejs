@@ -129,10 +129,10 @@
         var hojas111 = new THREE.Mesh( geometry_sphere1, verde );
         var hojas222 = new THREE.Mesh( geometry_sphere1, verde );
         var hojas333 = new THREE.Mesh( geometry_sphere1, verde );
-        hojas_11.position.set(11, 9, 15);
-        hojas111.position.set(9, 9, 15);
-        hojas222.position.set(10, 9, 16);
-        hojas333.position.set(10, 10, 15); 
+        hojas_11.position.set(13, 9, 15);
+        hojas111.position.set(11, 9, 15);
+        hojas222.position.set(12, 9, 16);
+        hojas333.position.set(12, 10, 15); 
     
         scene.add(hojas_11);
         scene.add(hojas111);
@@ -177,7 +177,7 @@
         var geometry_cylinder2 = new THREE.CylinderGeometry( 1, 2, 9, 32 );
         var material = new THREE.MeshPhongMaterial( {color: 0x804000} );
         var tronco3 = new THREE.Mesh( geometry_cylinder2, material );
-        tronco3.position.set(10, 4.5, 15);
+        tronco3.position.set(12, 4.5, 15);
         scene.add(tronco3);
 
         var geometry_cylinder3 = new THREE.CylinderGeometry( 1, 2, 9, 32 );
@@ -192,32 +192,28 @@
         plane.rotation.x = Math.PI * -.5;
         scene.add( plane );
 
-        
+        var textureLoader1 = new THREE.TextureLoader();
+        var madera = textureLoader1.load("/textures/madera.jpg");
+        const torusgeometry = new THREE.TorusGeometry( 5, 0.4, 32, 8 );
+        let torusmat = new THREE.MeshBasicMaterial({
+            map: madera,
+            side: THREE.DoubleSide
+        });
+        const matorus = new THREE.MeshBasicMaterial( { color: 0xf0f0f0, side: THREE.DoubleSide } );
+        const torus = new THREE.Mesh( torusgeometry, torusmat );
+        torus.position.set(5, 0.3, 10);
+        torus.rotation.x = Math.PI / 2;
+        scene.add( torus );
+
         var textureLoader = new THREE.TextureLoader();
-        const loader = new THREE.CubeTextureLoader();
-        loader.setPath( 'textures/' );
-        const textureCube = loader.load( [
-            'firme.jpg',
-            'firme.jpg',
-            'firme.jpg',
-            'firme.jpg',
-            'firme.jpg',
-            'firme.jpg'
-        ] );
-
-        const materialfirme = new THREE.MeshBasicMaterial( {envMap: textureCube } );
-        var firmesaso =new THREE.Mesh(geometry_cube, materialfirme);
-        firmesaso.position.set(0,3,10);
-        scene.add(firmesaso);
-
         var agua = textureLoader.load("/textures/water.jpg");
-        let circleGeom = new THREE.CircleGeometry(6, 4,);
+        let circleGeom = new THREE.CircleGeometry(4.6, 32, 0, 15);
         let circle = new THREE.MeshBasicMaterial({
             map: agua,
             side: THREE.DoubleSide
         });
         let piscina = new THREE.Mesh(circleGeom, circle);
-        piscina.position.set(0, 0.2, 10)
+        piscina.position.set(5, 0.2, 10)
         piscina.rotation.x = Math.PI / 2;
         scene.add(piscina);
 
